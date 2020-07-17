@@ -1,0 +1,17 @@
+<div *ngFor="let article of articles">
+  <ul class="w3-ul w3-hoverable" [routerLink]="['/articles', article.id]">
+    <li class="w3-bar">
+      <div class="w3-bar-item">
+        <img
+          src="assets/fire.jpg"
+          class="w3-bar-item w3-circle"
+          style="width: 30px;"
+        />
+        <span class="w3-xlarge">{{ article.overview }}...</span><br />
+        <span class="w3-large"
+          >Published: {{ article.date }}, {{ article.author }}</span
+        >
+      </div>
+    </li>
+  </ul>
+</div>

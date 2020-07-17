@@ -1,0 +1,51 @@
+<div class="comment_block">
+  <div class="create_new_comment">
+    <div class="user_avatar">
+      <img src="assets/avatar.jpg" />
+    </div>
+    <div class="input_comment">
+      <input
+        [(ngModel)]="newComment"
+        (keyup.enter)="addComment(newComment)"
+        type="text"
+        placeholder="Join the conversation.."
+      />
+    </div>
+  </div>
+
+  <div class="new_comment" *ngFor="let comment of comments; let idx = index">
+    <ul class="user_comment">
+      <div class="user_avatar">
+        <img src="assets/avatar.jpg" />
+      </div>
+      <div class="comment_body">
+        <p>{{ comment.comment }}</p>
+      </div>
+      <div class="comment_toolbar">
+        <div class="comment_details">
+          <ul>
+            <li><i class="fa fa-clock-o"></i>{{ comment.date }}</li>
+            <li>
+              <i class="fa fa-pencil"></i
+              ><span class="user">{{ comment.user.name }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="comment_tools">
+          <ul>
+            <li><i class="fa fa-reply" alt="Reply" title="Reply"></i></li>
+            <li><i class="fa fa-heart love" alt="Like" title="Like"></i></li>
+            <li>
+              <i
+                class="fa fa-trash"
+                (click)="deleteComment(idx)"
+                alt="Remove"
+                title="Remove"
+              ></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>

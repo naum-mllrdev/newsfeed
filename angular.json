@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "my-newsfeed-app"
+    }
+  },
+  "defaultProject": "my-newsfeed-app",
+  "cli": {
+    "analytics": false
+  }
 }

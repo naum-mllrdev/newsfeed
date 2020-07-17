@@ -1,0 +1,19 @@
+$fontsize: 12px;
+
+table {
+  tr {
+    th {
+      span {
+        font-size: $fontsize + 16px;
+      }
+
+      > .noie {
+        font-weight: bold;
+
+        &:hover {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
