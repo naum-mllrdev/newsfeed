@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FeedsComponent } from './feeds.component';
+import { FeedsPageComponent } from './feeds-page.component';
+import { FeedsListComponent } from './feeds-list.component';
 import { FeedsRoutingModule } from './feeds-routing.module';
 
 @NgModule({
@@ -10,10 +11,12 @@ import { FeedsRoutingModule } from './feeds-routing.module';
     FeedsRoutingModule
   ],
   declarations: [
-    FeedsComponent
+    FeedsPageComponent,
+    FeedsListComponent
   ],
   exports: [
-    FeedsComponent
+    FeedsPageComponent,
+    FeedsListComponent
   ]
 })
 export class FeedsModule { }

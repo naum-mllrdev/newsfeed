@@ -1,19 +1,5 @@
 <div class="comment_block">
-  <div class="create_new_comment">
-    <div class="user_avatar">
-      <img src="assets/avatar.jpg" />
-    </div>
-    <div class="input_comment">
-      <input
-        [(ngModel)]="newComment"
-        (keyup.enter)="addComment(newComment)"
-        type="text"
-        placeholder="Join the conversation.."
-      />
-    </div>
-  </div>
-
-  <div class="new_comment" *ngFor="let comment of comments; let idx = index">
+  <div class="new_comment" *ngFor="let comment of commentsList; let idx = index">
     <ul class="user_comment">
       <div class="user_avatar">
         <img src="assets/avatar.jpg" />

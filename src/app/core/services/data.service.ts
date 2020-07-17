@@ -1,29 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { ApiService } from './api.service';
-import { IArticle } from '../shared/interfaces';
+import { IArticle } from '../interfaces/IArticle';
 
 @Injectable()
 export class DataService {
-  service: ApiService;
-  
+
+  constructor(private service: ApiService) {}
+
   getFeeds(): Observable<IArticle[]> {
-    return this.http.get<IArticle[]>(this.baseUrl + 'feeds')// + 'feeds.json')
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.service.get<IArticle[]>('/feeds');
   }
 
   getFeed(id: number): Observable<IArticle> {
-    return this.http.get<IArticle[]>(this.baseUrl + 'feeds')// + 'feeds.json')
+    return this.service.get<IArticle[]>('/feeds')
       .pipe(
         map(feeds => {
           const feed = feeds.filter((article: IArticle) => article.id === id);
           return (feed && feed.length) ? feed[0] : null;
-        }),
-        catchError(this.handleError)
+        })
       );
   }
 }

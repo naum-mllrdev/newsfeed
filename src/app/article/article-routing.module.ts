@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArticleComponent } from './article.component';
 
 const routes: Routes = [
-  { path: 'article/:id', component: ArticleComponent }
+  { path: ':id', component: ArticleComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class ArticlesRoutingModule { }

@@ -1,0 +1,18 @@
+<div class="comment_block">
+  <div class="create_new_comment">
+    <div class="user_avatar">
+      <img src="assets/avatar.jpg" />
+    </div>
+    <div class="input_comment">
+      <input type="text"
+        [formControl]="comment"
+        (keyup.enter)="addComment()"
+        placeholder="Join the conversation.."
+      />
+    </div>
+    <div *ngIf="comment.invalid">
+      <p>Ooops! Accepts only max of 10 characters. Please try again.</p>
+    </div>
+  </div>
+</div>
+<app-comments-list [commentsList]="commentsList"></app-comments-list>

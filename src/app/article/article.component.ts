@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import { IArticle } from '../shared/interfaces';
 import { ActivatedRoute } from '@angular/router';
+import { IArticle } from '../core/interfaces/IArticle';
 
-import { DataService } from '../core/data.service';
+import { DataService } from '../core/services/data.service';
 
 @Component({
   selector: 'app-article',
@@ -10,23 +10,23 @@ import { DataService } from '../core/data.service';
   styleUrls: ['../w3.css']
 })
 export class ArticleComponent implements OnInit {
-  showComments: boolean;
-  showCommentText: string;
   article: IArticle;
+  showComments: boolean;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.showComments = false;
-    this.showCommentText = this.showComments ? 'Hide Comments' : 'Show Comments';
+    this.getArticle();
+  }
 
-    let id = +this.route.snapshot.paramMap.get('id');
+  getArticle(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
     this.dataService.getFeed(id)
       .subscribe((feed: IArticle) => this.article = feed);
   }
 
-  toggleComments() {
+  toggleComments(): void {
     this.showComments = !this.showComments;
-    this.showCommentText = this.showComments ? 'Hide Comments' : 'Show Comments';
   }
 }

@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  private getBaseUrl() {
+  private getBaseUrl(): string {
     return environment.baseApiUrl;
   }
 
-  get<T>(url: string) {
-    return this.http.get<T>(this.getBaseUrlurl)
+  get<T>(url: string)  {
+    console.log(this.getBaseUrl() + url);
+    return this.http.get<T>(this.getBaseUrl() + url)
       .pipe(
         catchError(this.handleError)
       );
@@ -22,8 +24,8 @@ export class ApiService {
     console.error('server error:', error);
     if (error.error instanceof Error) {
       const errMessage = error.error.message;
-      return Observable.throw(errMessage);
+      return throwError(errMessage);
     }
-    return Observable.throw(error || 'Node.js server error');
+    return throwError(error || 'Node.js server error');
   }
 }
